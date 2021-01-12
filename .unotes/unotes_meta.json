@@ -7,7 +7,23 @@
       "isOrdered": true,
       "folders": {},
       "files": {
-        "kafka-cheat-sheet": 0
+        "kafka-cheat-sheet": 0,
+        "mx5": 1
+      }
+    },
+    "mx5": {
+      "name": "mx5",
+      "isOrdered": true,
+      "folders": {
+        "images": {
+          "name": "images",
+          "isOrdered": true,
+          "folders": {},
+          "files": {}
+        }
+      },
+      "files": {
+        "mx5-cheatsheet": 0
       }
     }
   },
