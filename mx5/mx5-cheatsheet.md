@@ -12,9 +12,9 @@
 
 From the top to the bottom, the terminal names are:
 
-POW - Indicates Wide Open Throttle
-TL - Common
-IDL - Indicates Throttle Closed
+POW - Indicates Wide Open Throttle (Red wire)
+TL - Common (Black)
+IDL - Indicates Throttle Closed (green/black)
 
 This is a double pole single double throw switch with the center off.
 
@@ -29,7 +29,13 @@ With the throttle at maximum, there will be continuity between TL and POW.
 
 Using an Ohm meter, measure for continuity between terminals TL and IDL:
 
-With a .016 inch feeler gauge inserted at the throttle stop screw, you should have continuity.
-With a .027 feeler gauge inserted, no continuity.
+With a .016 inch, 0.4mm feeler gauge inserted at the throttle stop screw, you should have continuity.
+With a .027 inch, 0.7mm feeler gauge inserted, no continuity.
 
 If adjustment is needed, loosen the TPS screws and rotate the sensor to achieve these results.
+
+### **Measuring from ECU**
+
+Find the POW cable, it should be green white (2L) on the left connector bottom row. It should be 5v when not at WOT and 0v at WOT.
+Find the IDL cable, it should be red (1N) on the right connector bottom row. It should be 0v at idle, and 12v with a little throttle up to WOT.
+![](https://www.miata.net/garage/ECU_Pin-Out.png)
