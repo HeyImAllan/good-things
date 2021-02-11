@@ -54,3 +54,5 @@ NA01-61-A10
 
 A nice guide:
 [Replacing a 94-97 Miata Heater Core - Did It Myself (did-it-myself.com)](https://did-it-myself.com/replacing-a-94-97-miata-heater-core/)
+
+## **Upper control arm stuff**
