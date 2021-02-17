@@ -79,7 +79,7 @@ public class App {
         Schema.Parser schemaParser = new Schema.Parser();
         Schema avroSchema = schemaParser.parse(schema);
         System.out.println(message);
-        byte[] valueAsBytes = message.getBytes(StandardCharsets.ISO_8859_1);
+        byte[] valueAsBytes = message.getBytes(StandardCharsets.UTF_8);
         int valueByteLength = valueAsBytes.length;
         //System.out.println(valueAsBytes);
         //System.out.println(valueByteLength);
