@@ -1,0 +1,201 @@
+{
+    "type": "record",
+    "name": "ValidationResultEvent",
+    "namespace": "com.ing.gep.validationResult",
+    "doc": "Avro schema for automated validation output events",
+    "fields": [
+        {
+            "name": "schemaVersion",
+            "type": "long",
+            "doc": "GlobalEngineeringPlatformEvent AVRO schema version",
+            "default": 1
+        },
+        {
+            "name": "GEPEventAVROSchemaHeader",
+            "type": {
+                "type": "record",
+                "name": "GEPEventAVROSchemaHeader",
+                "doc": "GEP Fact Event description: Meta data of a fact is about <who> <did> <what> <when>. This header must be included in every event sent for the purpose of IT Risk Automation & Configuration Management Automation.",
+                "fields": [
+                    {
+                        "name": "schemaVersion",
+                        "type": "string",
+                        "doc": "GEP Operation Event AVRO schema version",
+                        "default": "1.0.1"
+                    },
+                    {
+                        "name": "timestamp",
+                        "type": "long",
+                        "doc": "information about the <when> - timestamp in millis,  UTC time (epoch),  of when the reported fact has actually occurred(not the event timestamp)"
+                    },
+                    {
+                        "name": "message",
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "doc": "Human readable free text message associated to the event- not used for data parsing",
+                        "default": "null"
+                    },
+                    {
+                        "name": "eventProducerItProductId",
+                        "type": "string",
+                        "doc": "context about the <who> We need to know which instance of an IT Product runtime service triggered the eventIt is the combination of - the IT Product code (this attribute) - and an environment id ([DTAP] or CDaaS Environment id) (environmentId attribute) The eventProducerItProductId is the IT Product (ACE Purpose) code unique identifierto which belongs the system sending the Event Temporarily,  if the ACE Purpose is unknownn,  please use the Unique ING Identifierof the related Business Application inServiceNow DevOps CMDB"
+                    },
+                    {
+                        "name": "environmentId",
+                        "type": "string",
+                        "doc": "environment id is either one of the DTAP character or a AzureDevOps CDaaS Environment id"
+                    },
+                    {
+                        "name": "host",
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "doc": "the fully qualified domain name FQDN by preference,  or ip address,  of the host sending the event"
+                    },
+                    {
+                        "name": "userIdentity",
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "doc": "identity of the user or the system account that triggered the event"
+                    },
+                    {
+                        "name": "operation",
+                        "type": "string",
+                        "doc": "Information about the performed action,  a(past-tense verb) performed by a user or a system"
+                    },
+                    {
+                        "name": "traceId",
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "doc": "identifier used to correlate multiple events of a same context"
+                    },
+                    {
+                        "name": "impactedITProduct",
+                        "type": "string",
+                        "doc": "information about the on <what> which IT Product,  which related resource - ACE P-Code of the IT Product impacted by the operation - ServiceNow CMDB ING Unique Identifier could also be given if no IT Product code exists yet"
+                    },
+                    {
+                        "name": "impactedITResource",
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "doc": "the ID of the IT Resource impacted by the operation (the <what>) - or by default its name. ServiceNow CMDB ING Unique Identifier could also be given if no IT Product code exists yet"
+                    }
+                ]
+            },
+            "doc": "The mandatory GEP Event header subSchema"
+        },
+        {
+            "name": "validationResult",
+            "type": {
+                "type": "record",
+                "name": "ValidationResult",
+                "fields": [
+                    {
+                        "name": "controlId",
+                        "type": "string",
+                        "doc": "The id of the related control"
+                    },
+                    {
+                        "name": "result",
+                        "type": {
+                            "type": "enum",
+                            "name": "ResultStatus",
+                            "symbols": [
+                                "skipped",
+                                "warning",
+                                "succeeded",
+                                "failed",
+                                "error"
+                            ]
+                        },
+                        "doc": "Validation result"
+                    },
+                    {
+                        "name": "details",
+                        "type": {
+                            "type": "array",
+                            "items": {
+                                "type": "record",
+                                "name": "RuleResult",
+                                "fields": [
+                                    {
+                                        "name": "ruleName",
+                                        "type": "string"
+                                    },
+                                    {
+                                        "name": "result",
+                                        "type": "ResultStatus"
+                                    },
+                                    {
+                                        "name": "valuesFound",
+                                        "type": {
+                                            "type": "map",
+                                            "values": "string"
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        "doc": "Machine readable set of details about the status of each rule which makes up the validation logic"
+                    },
+                    {
+                        "name": "advice",
+                        "type": [
+                            "null",
+                            {
+                                "type": "array",
+                                "items": "string"
+                            }
+                        ],
+                        "doc": "Human readable list of advice on what to fix to pass",
+                        "default": null
+                    },
+                    {
+                        "name": "eventSources",
+                        "type": {
+                            "type": "array",
+                            "items": {
+                                "type": "record",
+                                "name": "eventSources",
+                                "fields": [
+                                    {
+                                        "name": "eventProducerItProductId",
+                                        "type": "string"
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "name": "validationRuleSet",
+                        "type": {
+                            "type": "record",
+                            "name": "RuleSet",
+                            "fields": [
+                                {
+                                    "name": "ruleSetId",
+                                    "type": "string"
+                                },
+                                {
+                                    "name": "version",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "doc": "Reference to the ruleset which was used for validation"
+                    }
+                ]
+            },
+            "doc": "Automated validation result"
+        }
+    ]
+}
