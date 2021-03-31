@@ -54,8 +54,10 @@ public class App {
         Object record = null;
         while (dataFileReader.hasNext()) {
         record = dataFileReader.next();
+            // System.out.println(record.toString());
             JSONObject jObject = new JSONObject(record.toString());
             String messageString = jObject.getJSONObject("Body").getString("bytes");
+            System.out.println(messageString);
             String schema = readFile(sourceSystemSchema);
             String myout = deserializeByteArray(messageString, schema);
             System.out.println(myout);

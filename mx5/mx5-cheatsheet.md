@@ -55,4 +55,8 @@ NA01-61-A10
 A nice guide:
 [Replacing a 94-97 Miata Heater Core - Did It Myself (did-it-myself.com)](https://did-it-myself.com/replacing-a-94-97-miata-heater-core/)
 
-## **Upper control arm stuff**
+## **MX5 NA MK1 Connector stuffs**
+
+TPS Sensor plug connector type: Junior Power Timer 282191-1 (The 282191-1 is a 3-way 1-row Timer Receptacle with 5mm pitch spacing,180° cable exit and PA body. This timer receptacle is suitable for use with junior power timer socket contacts.)
+Thermostat sensor connector type: Sumitomo DL Sealed Series 1P090WP-DL-F-L  
+
