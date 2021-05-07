@@ -60,3 +60,5 @@ A nice guide:
 TPS Sensor plug connector type: Junior Power Timer 282191-1 (The 282191-1 is a 3-way 1-row Timer Receptacle with 5mm pitch spacing,180° cable exit and PA body. This timer receptacle is suitable for use with junior power timer socket contacts.)
 Thermostat sensor connector type: Sumitomo DL Sealed Series 1P090WP-DL-F-L  
 
+## body panels
+https://easyparts.online/mazda-mx5-89-rear-wheel-arch-right
